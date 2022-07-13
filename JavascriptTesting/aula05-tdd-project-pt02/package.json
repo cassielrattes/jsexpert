@@ -1,0 +1,19 @@
+{
+    "name": "aula05-tdd-project-pt02",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "seed": "node ./seed",
+        "test": "npx mocha -w --parallel **/**/*.test.js",
+        "test:cov": "npx nyc mocha --parallel **/**/*.test.js"
+    },
+    "devDependencies": {
+        "chai": "4",
+        "faker": "^5.5.3",
+        "mocha": "^8.2.1",
+        "nyc": "^15.1.0",
+        "sinon": "^9.2.1"
+    },
+    "dependencies": {}
+}
