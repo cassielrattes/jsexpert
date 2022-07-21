@@ -1,6 +1,6 @@
 'use strict';
 
-const { watch, promises: { readFile } } = require('fs');
+const { watch, promises: { readFile }, read } = require('fs');
 
 class File {
     watch(event, filename) {
@@ -10,11 +10,8 @@ class File {
         this.showContent(filename);
     }
 
-    async showContent() {
-        const contentFileBuffer = await readFile(filename);
-        const contentFileString = contentFileBuffer.toString();
-
-        console.log(contentFileString);
+    async showContent(filename) {
+        console.log((await readFile(filename)).toString());
     }
 }
 
@@ -28,8 +25,8 @@ const file = new File();
 
 // Podemos deixar explicito qual o contexto que a funcao deve seguir
 // O bind retorna uma funcao com o this que se mantem de file, ignorando o do watch
-// watch(__filename, file.watch.bind(file))
+watch(__filename, file.watch.bind(file));
 
 // a diferenca entre um e outro é que o .call passa uma lista de argumentos e o .apply passa os argumentos como array
-file.watch.call({ showContent: () => console.log('call: hello showContent!') }, null, __filename);
-file.watch.apply({ showContent: () => console.log('apply: hello showContent!') }, [null, __filename]);
+// file.watch.call({ showContent: () => console.log('call: hello showContent!') }, null, __filename);
+// file.watch.apply({ showContent: () => console.log('apply: hello showContent!') }, [null, __filename]);
