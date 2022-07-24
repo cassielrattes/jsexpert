@@ -1,6 +1,6 @@
 'use strict';
 
-const { watch, promises: { readFile }, read } = require('fs');
+const { watch, promises: { readFile } } = require('fs');
 
 class File {
     watch(event, filename) {
