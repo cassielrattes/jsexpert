@@ -1,0 +1,40 @@
+https://regex101.com/
+^\d{3}.\d{3}.\d{3}-\d{2}$
+
+123.123.123-14
+321.123.345-20
+200.300.500-19
+
+replace [.-] - vazio
+
+12312312314
+32112334520
+20030050019
+
+replace ^(\w+),\s(\w+)$ por {firstName: "$2", lastName: "$1"}
+
+Wendel, Erick
+Gome, Laila
+Johnson, Jose
+
+{firstName: "Erick", lastName: "Wendel"}
+{firstName: "Laila", lastName: "Gome"}
+{firstName: "Jose", lastName: "Johnson"}
+
+
+replace \[(.*?)\]\(([http|https].*?)\) por <a href="$2">$1</a>
+
+O [Erick Wendel](https://erickwendel.com) faz palestras e voce devia segui-lo no [Twitter](http://twitter.com/erickwendel_)
+
+
+[Google](http://google.com)
+
+vai que vai!
+
+O <a href="https://erickwendel.com">Erick Wendel</a> faz palestras e voce devia segui-lo no <a href="http://twitter.com/erickwendel_">Twitter</a>
+
+
+<a href="http://google.com">Google</a>
+
+vai que vai!
+
