@@ -102,3 +102,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+./RegExp/aula01-vscode-terminal-regex/aula05-tdd-project-pt03**
