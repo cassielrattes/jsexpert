@@ -118,6 +118,6 @@ assert.deepStrictEqual([...myDate], expectedDates);
 
 ; (async () => {
     const dates = await Promise.all([...myDate]);
-    console.log(dates);
+    console.log("dates", dates);
     assert.deepStrictEqual(dates, expectedDates);
 })();
