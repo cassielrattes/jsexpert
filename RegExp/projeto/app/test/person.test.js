@@ -1,9 +1,9 @@
 const { describe, it } = require("mocha");
 const { expect } = require("chai");
+const Person = require("../src/person");
 
-const TextProcessorFluentAPI = require("../src/textProcessorFluentAPI");
-const mock = require("./mocks/valid");
-
+// const TextProcessorFluentAPI = require("../src/textProcessorFluentAPI");
+// const mock = require("./mocks/valid");
 
 describe("Person", () => {
     it('it should generate a person instance from properties lists', () => {
@@ -33,6 +33,4 @@ describe("Person", () => {
 
         expect(result).to.be.deep.equal(expected);
     });
-
-
 });

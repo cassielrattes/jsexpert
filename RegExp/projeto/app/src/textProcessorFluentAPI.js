@@ -1,4 +1,5 @@
 const pdf = require("pdf-parse");
+const Person = require("./person");
 const { evaluteRegex } = require("./util");
 
 // O objetivo do Fluent API é executar tarefas
@@ -48,6 +49,13 @@ class TextProcessorFluentAPI {
         const trimSpaces = evaluteRegex(/^\s+|\s+$|\n/g);
 
         this.#content = this.#content.map(line => line.map(item => item.replace(trimSpaces, "")));
+
+        return this;
+    }
+
+    mapPerson() {
+        // passa o array de itens no constructor da pessoa
+        this.#content = this.#content.map(line => new Person(line));
 
         return this;
     }
