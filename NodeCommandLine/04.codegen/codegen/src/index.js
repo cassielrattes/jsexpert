@@ -2,43 +2,45 @@
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { createFiles } from "./createFiles.js";
-import { createLayersIfNotExists } from "./createLayers.js";
 
-const { argv: { componentName } } = yargs(hideBin(process.argv))
-    .command('skeleton', 'Create project skeleton', (builder) => {
-        builder.option('component-name', {
-            alias: 'c',
-            demandOption: true,
-            describe: 'Component name',
-            type: 'array'
-        })
-            .example('skeleton --component-name product', 'Creates a project with a single domain')
-            .example('skeleton -c product -c person -c colors', 'Creates a project with a list of domain')
-            .epilog('copyright 2022 - Cassiel Rattes Cortez');
-    });
+import { createLayersIfNotExists } from './createLayers.js';
+import { createFiles } from './createFiles.js';
+
+const { argv: { componentName = [] } } = yargs(hideBin(process.argv))
+    // codegen skeleton
+    .command('skeleton', 'create project skeleton', (builder) => {
+        return builder
+            .option('component-name', {
+                alias: 'c',
+                demandOption: true,
+                describe: 'component\'s name',
+                type: 'array'
+            })
+
+            .example('skeleton --component-name product', 'creates a project with a single domain')
+            .example('skeleton -c product -c person -c colors', 'creates a project with a list of domain');
+    })
+    .epilog('copyright 2021 - Erick Wendel Corporation');
 
 const env = process.env.NODE_ENV;
-
-const defaultFolder = env === "dev" ? 'tmp' : 'src';
+const defaultMainFolder = env === "dev" ? "tmp" : "src";
 
 const layers = ['repository', 'service', 'factory'].sort();
-
 const config = {
     layers,
-    defaultMainFolder: defaultFolder,
+    defaultMainFolder,
     mainPath: '.'
 };
 
-createLayersIfNotExists(config);
+await createLayersIfNotExists(config);
 
 const pendingPromises = [];
+
 for (const domain of componentName) {
     const result = createFiles({
         ...config,
         componentName: domain
     });
-
     pendingPromises.push(result);
 }
 
