@@ -28,7 +28,7 @@ describe('#Codegen 3-layers arch', () => {
     const factoryName = `${componentName}Factory`;
 
     beforeEach(() => {
-        jest.resetAllMocks();
+        jest.restoreAllMocks();
         jest.clearAllMocks();
     });
 

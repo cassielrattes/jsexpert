@@ -9,7 +9,7 @@ export default class ProductService {
     }
 
     read(query) {
-        return this.productRepository.create(query);
+        return this.productRepository.read(query);
     }
 
     update(id, data) {

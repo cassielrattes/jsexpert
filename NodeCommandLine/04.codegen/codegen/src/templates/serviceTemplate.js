@@ -1,4 +1,4 @@
-import Util from "../util";
+import Util from "../util.js";
 
 const componentNameAnchor = '$$componentName';
 const currentContextAnchor = '$$currentContext';
@@ -15,7 +15,7 @@ export default class $$componentNameService {
     }
 
     read(query) {
-        return $$currentContext.create(query);
+        return $$currentContext.read(query);
     }
 
     update(id, data) {

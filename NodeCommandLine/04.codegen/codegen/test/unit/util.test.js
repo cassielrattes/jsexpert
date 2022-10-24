@@ -9,7 +9,7 @@ import Util from "../../src/util";
 
 describe('#Util - Strings', () => {
     beforeEach(() => {
-        jest.resetAllMocks();
+        jest.restoreAllMocks();
         jest.clearAllMocks();
     });
 
