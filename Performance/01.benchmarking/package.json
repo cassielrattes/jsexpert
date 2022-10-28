@@ -1,0 +1,17 @@
+{
+    "name": "@cassielrattes/01.benchmarking",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "keywords": [],
+    "author": "cassielcortez",
+    "license": "ISC",
+    "dependencies": {
+        "benchmark": "^2.1.4",
+        "uuid": "^9.0.0"
+    }
+}
